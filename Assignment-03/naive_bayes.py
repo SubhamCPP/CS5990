@@ -1,10 +1,11 @@
 #-------------------------------------------------------------------------
 # AUTHOR: Subham Panda
-# FILENAME: knn.py
-# SPECIFICATION: Complete a KNN classification task with discretized temperature classes
+# FILENAME: naive_bayes.py
+# SPECIFICATION: This program will read the weather_training.csv file. Print
+# the naive bayes accuracy calculated after all of the predictions.
 # FOR: CS 5990- Assignment #3
-# TIME SPENT: 45 minutes
-#-------------------------------------------------------------------------
+# TIME SPENT: 40 minutes
+#-----------------------------------------------------------*/
 
 #importing some Python libraries
 from sklearn.naive_bayes import GaussianNB
