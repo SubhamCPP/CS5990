@@ -22,11 +22,10 @@ classes = [i for i in range(-22, 40, 6)]
 
 # function to discretize the temperature values
 def discretize_temperature(value):
-    # find the class interval that contains the temperature value
     for cl in classes:
-        if value < cl + 3:  # assuming a range of -3 to +3 around each class midpoint
+        if value < cl + 3: 
             return cl
-    return classes[-1]  # return the last class if none match
+    return classes[-1]  
 
 # reading the training data
 df_training = pd.read_csv('weather_training.csv')
@@ -36,7 +35,7 @@ y_training = np.array([discretize_temperature(x) for x in df_training['Temperatu
 # reading the test data
 df_test = pd.read_csv('weather_test.csv')
 X_test = df_test.drop(columns=['Formatted Date', 'Temperature (C)']).values
-y_test_real = df_test['Temperature (C)'].values  # Keep real values for accuracy calculation
+y_test_real = df_test['Temperature (C)'].values 
 y_test = np.array([discretize_temperature(x) for x in df_test['Temperature (C)'].values]).astype(int)
 
 # Normalize the feature data
@@ -59,7 +58,7 @@ for k in k_values:
             correct_predictions = 0
             for x_testSample, y_testRealValue in zip(X_test_normalized, y_test_real):
                 predicted_class = clf.predict([x_testSample])[0]
-                predicted_temperature = predicted_class  # As classes directly represent temperature ranges
+                predicted_temperature = predicted_class  
                 percentage_difference = 100 * abs(predicted_temperature - y_testRealValue) / abs(y_testRealValue)
 
                 # the prediction is considered correct if within ±15% of the actual value
